@@ -34,16 +34,6 @@ module.exports.security = {
   //   allowCredentials: false,
   // },
 
-
-  /****************************************************************************
-  *                                                                           *
-  * CSRF protection should be enabled for this application.                   *
-  *                                                                           *
-  * For more information, see:                                                *
-  * https://sailsjs.com/docs/concepts/security/csrf                           *
-  *                                                                           *
-  ****************************************************************************/
-
   csrf: true
 
 };
