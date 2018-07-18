@@ -34,6 +34,6 @@ module.exports.security = {
   //   allowCredentials: false,
   // },
 
-  csrf: true
+  csrf: false
 
 };

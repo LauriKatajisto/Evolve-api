@@ -10,4 +10,6 @@
 
 module.exports.routes = {
   'GET /': 'HelloController.hello',
+  'GET /workout': 'WorkoutController.listAll',
+  'POST /workout': 'WorkoutController.addWorkout',
 };
