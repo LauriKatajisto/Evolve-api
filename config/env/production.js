@@ -120,36 +120,8 @@ module.exports = {
   *                                                                          *
   ***************************************************************************/
   session: {
-
-    /***************************************************************************
-    *                                                                          *
-    * Production session store configuration.                                  *
-    *                                                                          *
-    * Uncomment the following lines to finish setting up a package called      *
-    * "@sailshq/connect-redis" that will use Redis to handle session data.     *
-    * This makes your app more scalable by allowing you to share sessions      *
-    * across a cluster of multiple Sails/Node.js servers and/or processes.     *
-    * (See http://bit.ly/redis-session-config for more info.)                  *
-    *                                                                          *
-    * > While @sailshq/connect-redis is a popular choice for Sails apps, many  *
-    * > other compatible packages (like "connect-mongo") are available on NPM. *
-    * > (For a full list, see https://sailsjs.com/plugins/sessions)            *
-    *                                                                          *
-    ***************************************************************************/
-    // adapter: '@sailshq/connect-redis',
-    // url: 'redis://user:password@localhost:6379/databasenumber',
-    //--------------------------------------------------------------------------
-    // /\   OR, to avoid checking it in to version control, you might opt to
-    // ||   set sensitive credentials like this using an environment variable.
-    //
-    // For example:
-    // ```
-    // sails_session__url=redis://admin:myc00lpAssw2D@bigsquid.redistogo.com:9562/0
-    // ```
-    //
-    //--------------------------------------------------------------------------
-
-
+    adapter: '@sailshq/connect-redis',
+    url: process.env.REDISTOGO_URL,
 
     /***************************************************************************
     *                                                                          *
