@@ -1,11 +1,9 @@
-module.exports = function errorMessage() {
-  const { req, res } = this;
-
-  sails.log.verbose('Ran custom response: res.expired()');
-
-  if (req.wantsJSON) {
-    return res.status(498).send('Token Expired/Invalid');
+module.exports = function errorMessage(message, status, err) {
+  const { res } = this;
+  let code = status;
+  if (!code) {
+    code = 400;
   }
-
-  return res.status(498).view('498');
+  sails.log.verbose('Ran custom response: res.errorMessage()');
+  return res.status(code).json({ error: true, message, err });
 };
