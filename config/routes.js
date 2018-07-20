@@ -11,6 +11,7 @@
 module.exports.routes = {
   'GET /': 'HelloController.hello',
   'GET /workout': 'WorkoutController.listAll',
+  'POST /workout/filter': 'WorkoutController.search',
   'GET /workout/:id': 'WorkoutController.getOne',
   'POST /workout/:id': 'WorkoutController.updateWorkout',
   'POST /workout': 'WorkoutController.addWorkout',

@@ -4,6 +4,44 @@ module.exports = {
     res.status(200).json(workouts);
   },
 
+  async search(req, res) {
+    const { tags } = req.allParams();
+    if (!_.isArray(tags)) {
+      return res.errorMessage('Tags need to be an array.', 400);
+    }
+
+    try {
+      const workouts = await Workout.find();
+
+      const filtered = workouts.filter((w) => {
+        let status = false;
+        let tagsFound = 0;
+        // check if tags from params is found from workout
+        tags.forEach((t1) => {
+          // loop through all workout tags
+          w.tags.forEach((t2) => {
+            if (t1 === t2) {
+              tagsFound += 1;
+            }
+          });
+          // check if all given tags are found
+          if (tagsFound === tags.length) {
+            status = true;
+          }
+        });
+
+        if (status) {
+          return w;
+        }
+        return null;
+      });
+
+      return res.status(200).json(filtered);
+    } catch (e) {
+      return res.errorMessage('Everything is fucked.', 400, e);
+    }
+  },
+
   async addWorkout(req, res) {
     const params = req.allParams();
 
