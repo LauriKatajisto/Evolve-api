@@ -21,6 +21,7 @@
     "Workout": true
   },
 
-  "rules": {}
-
+  "rules": {
+    "func-names": 0
+  }
 }
