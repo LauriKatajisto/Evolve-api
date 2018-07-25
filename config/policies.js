@@ -9,6 +9,12 @@
  */
 
 module.exports.policies = {
-
   '*': true,
+  HelloController: {
+    hello: ['has-valid-token']
+  },
+  WorkoutController: {
+    addWorkout: ['has-valid-token'],
+    updateWorkout: ['has-valid-token']
+  }
 };
