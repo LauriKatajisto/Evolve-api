@@ -18,7 +18,8 @@
     "_": true,
     "async": true,
     "User": true,
-    "Workout": true
+    "Workout": true,
+    "Token": true
   },
 
   "rules": {
