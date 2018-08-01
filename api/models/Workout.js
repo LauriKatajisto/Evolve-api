@@ -10,5 +10,9 @@ module.exports = {
         return _.isArray(value);
       },
     },
+    workoutcollections: {
+      collection: 'savedworkout',
+      via: 'workouts',
+    },
   },
 };
