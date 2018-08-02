@@ -34,6 +34,10 @@ module.exports = {
 
     try {
       const savedworkout = await SavedWorkout.findOne({ name: params.name }).populate('workouts');
+      if (!savedworkout) {
+        return res.errorMessage('Error finding stored workout.', 400);
+      }
+
       return res.status(200).json(savedworkout);
     } catch (e) {
       return res.errorMessage('Error finding stored workout.', 400, e);
