@@ -15,4 +15,7 @@ module.exports.routes = {
   'GET /workout/:id': 'WorkoutController.getOne',
   'POST /workout/:id': 'WorkoutController.updateWorkout',
   'POST /workout': 'WorkoutController.addWorkout',
+
+  'POST /savedworkout': 'SavedWorkoutController.createSW',
+  'GET /savedworkout/:name': 'SavedWorkoutController.getSW'
 };
