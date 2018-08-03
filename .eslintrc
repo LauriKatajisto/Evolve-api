@@ -20,7 +20,8 @@
     "User": true,
     "Workout": true,
     "Token": true,
-    "SavedWorkout": true
+    "SavedWorkout": true,
+    "ChallengeWorkout": true
   },
 
   "rules": {

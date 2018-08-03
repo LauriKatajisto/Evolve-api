@@ -14,5 +14,9 @@ module.exports = {
       collection: 'savedworkout',
       via: 'workouts',
     },
+    challenges: {
+      collection: 'ChallengeWorkout',
+      via: 'challenge',
+    },
   },
 };
