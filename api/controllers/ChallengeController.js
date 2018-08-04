@@ -1,16 +1,22 @@
 module.exports = {
+  async getWorkoutSet(req, res) {
+    try {
+      const challenges = await sails.helpers.findWorkoutSets('workout');
+
+      return res.status(200).json(challenges);
+    } catch (e) {
+      return res.errorMessage('Error getting challenges', 400, e);
+    }
+  },
+
   async getChallenges(req, res) {
-    const challenges = await ChallengeWorkout.find().populate('challenge');
+    try {
+      const challenges = await sails.helpers.findWorkoutSets('challenge');
 
-    challenges.forEach((c) => {
-      const { challenge } = c;
-      const reps = c.reps.split(',');
-      reps.forEach((rep, i) => {
-        challenge[i].reps = parseInt(reps[i], 10);
-      });
-    });
-
-    return res.status(200).json(challenges);
+      return res.status(200).json(challenges);
+    } catch (e) {
+      return res.errorMessage('Error getting challenges', 400, e);
+    }
   },
 
   async createChallenge(req, res) {

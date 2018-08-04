@@ -20,5 +20,6 @@ module.exports.routes = {
   'GET /savedworkout/:name': 'SavedWorkoutController.getSW',
 
   'GET /challenge': 'ChallengeController.getChallenges',
+  'GET /workoutset': 'ChallengeController.getWorkoutSet',
   'POST /challenge': 'ChallengeController.createChallenge'
 };
