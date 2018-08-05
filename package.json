@@ -1,7 +1,7 @@
 {
   "name": "evolve-apix",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
@@ -16,6 +16,7 @@
     "sentencer": "^0.1.5"
   },
   "devDependencies": {
+    "apidoc": "^0.17.6",
     "babel-eslint": "^8.2.6",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
@@ -26,6 +27,7 @@
     "sails-hook-grunt": "^3.0.2"
   },
   "scripts": {
+    "apidoc": "apidoc -i api/ -o assets/apidoc/",
     "start": "NODE_ENV=production node app.js",
     "dev": "NODE_ENV=development node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
@@ -42,5 +44,15 @@
   "license": "",
   "engines": {
     "node": ">=9.8"
+  },
+  "apidoc": {
+    "name": "Evolve Fitness API",
+    "version": "1.0.0",
+    "description": "",
+    "sampleUrl": "https://evolve-fitness.herokuapp.com",
+    "apidoc": {
+      "title": "Evolve Fitness API",
+      "url": "https://evolve-fitness.herokuapp.com"
+    }
   }
 }
