@@ -1,0 +1,1 @@
+{  "name": "Evolve Fitness API",  "version": "1.0.0",  "description": "",  "sampleUrl": "https://evolve-fitness.herokuapp.com",  "apidoc": "0.3.0",  "defaultVersion": "0.0.0",  "generator": {    "name": "apidoc",    "time": "2018-08-05T18:28:59.654Z",    "url": "http://apidocjs.com",    "version": "0.17.6"  }}
