@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "apidoc": "^0.17.6",
     "@sailshq/connect-redis": "^3.2.1",
     "@sailshq/lodash": "^3.10.3",
     "async": "2.0.1",
@@ -16,7 +17,6 @@
     "sentencer": "^0.1.5"
   },
   "devDependencies": {
-    "apidoc": "^0.17.6",
     "babel-eslint": "^8.2.6",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
@@ -28,8 +28,8 @@
   },
   "scripts": {
     "apidoc": "apidoc -i api/ -o assets/apidoc/",
-    "start": "NODE_ENV=production node app.js",
-    "dev": "NODE_ENV=development node app.js",
+    "start": "npm run apidoc && NODE_ENV=production node app.js",
+    "dev": "npm run apidoc && NODE_ENV=development node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "eslint api --quiet",
     "custom-tests": "echo \"(No other custom tests yet.)\" && echo",
