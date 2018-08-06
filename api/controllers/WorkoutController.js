@@ -105,7 +105,27 @@ module.exports = {
       return res.errorMessage('Everything is fucked.', 400, e);
     }
   },
-
+  /**
+   * @api {post} /workout Add new workout
+    * @apiPermission requireToken
+    * @apiName CreateWorkout
+   * @apiGroup Workout
+   * @apiVersion 1.0.0
+   * @apiSuccess {Object} body Workout
+   * @apiSampleRequest off
+   *
+   * @apiSuccessExample {json} Success-Response:
+   *  {
+   *  createdAt : 1532012974311,
+   *  updatedAt: 1532012974311,
+   *  id: 1,
+   *  name: "Pull up"
+   *  tags: [
+   *    "Gym",
+   *    "Mixed"
+   *    ]
+   *  }
+   */
   async addWorkout(req, res) {
     const params = req.allParams();
 
@@ -158,6 +178,27 @@ module.exports = {
     }
   },
 
+  /**
+   * @api {post} /workout/:id Update existing workout
+   * @apiName UpdateWorkout
+   * @apiGroup Workout
+   * @apiVersion 1.0.0
+   * @apiPermission requireToken
+   * @apiSuccess {Object} body Workout
+   * @apiSampleRequest off
+   *
+   * @apiSuccessExample {json} Success-Response:
+   *  {
+   *  createdAt : 1532012974311,
+   *  updatedAt: 1532012974311,
+   *  id: 1,
+   *  name: "Pull up"
+   *  tags: [
+   *    "Gym",
+   *    "Mixed"
+   *    ]
+   *  }
+   */
   async updateWorkout(req, res) {
     try {
       const { id, name, tags } = req.allParams();

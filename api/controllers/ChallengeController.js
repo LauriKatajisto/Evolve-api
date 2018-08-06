@@ -1,4 +1,11 @@
 module.exports = {
+  /**
+   * @api {get} /workoutset Get all curated workouts
+   * @apiName GetWorkoutsets
+   * @apiGroup Workout Challenges
+   * @apiVersion 1.0.0
+   *
+   */
   async getWorkoutSet(req, res) {
     try {
       const challenges = await sails.helpers.findWorkoutSets('workout');
@@ -9,6 +16,12 @@ module.exports = {
     }
   },
 
+  /**
+   * @api {get} /challenge Get all curated challenges
+   * @apiName GetChallenges
+   * @apiGroup Workout Challenges
+   * @apiVersion 1.0.0
+   */
   async getChallenges(req, res) {
     try {
       const challenges = await sails.helpers.findWorkoutSets('challenge');
@@ -19,6 +32,28 @@ module.exports = {
     }
   },
 
+  /**
+   * @api {post} /challenge Create new curated challenge or workoutset
+   * @apiName CreateChallenge
+   * @apiGroup Workout Challenges
+   * @apiVersion 1.0.0
+   * @apiSampleRequest off
+   * @apiPermission requireToken
+   *
+   * @apiParam {String} name Challenge name
+   * @apiParam {String} submitter Submitter name
+   * @apiParam {String} reps Comma separated list of reps for workouts
+   * @apiParam {Number[]} challenge Array of ids for challenge
+   * @apiParam {string="workout","challenge"} workouttype Type of the challenge
+   * @apiParamExample {json} New Challenge
+   * {
+   * "name": "W challenge",
+   * "submitter": "Kaj Laxström",
+   * "reps": "5,10",
+   * "challenge": [15,20],
+   * "workouttype": "workout"
+   *}
+   */
   async createChallenge(req, res) {
     const params = req.allParams();
     const {
