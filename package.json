@@ -14,7 +14,9 @@
     "sails-hook-organics": "^0.14.5",
     "sails-hook-orm": "^2.1.0",
     "sails-mysql": "^1.0.0",
-    "sentencer": "^0.1.5"
+    "sentencer": "^0.1.5",
+    "grunt": "^1.0.3",
+    "sails-hook-grunt": "^3.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
@@ -22,9 +24,7 @@
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0",
-    "grunt": "^1.0.3",
-    "sails-hook-grunt": "^3.0.2"
+    "eslint-plugin-react": "^7.10.0"
   },
   "scripts": {
     "apidoc": "apidoc -i api/ -o assets/apidoc/",
