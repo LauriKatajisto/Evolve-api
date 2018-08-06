@@ -1,10 +1,11 @@
 {
   "name": "evolve-apix",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "apidoc": "^0.17.6",
     "@sailshq/connect-redis": "^3.2.1",
     "@sailshq/lodash": "^3.10.3",
     "async": "2.0.1",
@@ -13,7 +14,9 @@
     "sails-hook-organics": "^0.14.5",
     "sails-hook-orm": "^2.1.0",
     "sails-mysql": "^1.0.0",
-    "sentencer": "^0.1.5"
+    "sentencer": "^0.1.5",
+    "grunt": "^1.0.3",
+    "sails-hook-grunt": "^3.0.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
@@ -21,12 +24,11 @@
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0",
-    "grunt": "^1.0.3",
-    "sails-hook-grunt": "^3.0.2"
+    "eslint-plugin-react": "^7.10.0"
   },
   "scripts": {
-    "start": "NODE_ENV=production node app.js",
+    "apidoc": "apidoc -i api/ -o assets/apidoc/",
+    "start": "npm run apidoc && NODE_ENV=production node app.js",
     "dev": "NODE_ENV=development node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "eslint api --quiet",
@@ -42,5 +44,15 @@
   "license": "",
   "engines": {
     "node": ">=9.8"
+  },
+  "apidoc": {
+    "name": "Evolve Fitness API",
+    "version": "1.0.0",
+    "description": "",
+    "sampleUrl": "https://evolve-fitness.herokuapp.com",
+    "apidoc": {
+      "title": "Evolve Fitness API",
+      "url": "https://evolve-fitness.herokuapp.com"
+    }
   }
 }

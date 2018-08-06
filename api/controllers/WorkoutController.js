@@ -1,9 +1,73 @@
 module.exports = {
+  /**
+   * @api {get} /workout Get all workouts
+   * @apiName GetWorkouts
+   * @apiGroup Workout
+   * @apiVersion  1.0.0
+   *
+   * @apiSuccess {json} body Array of workouts
+   *
+   * @apiSuccessExample {json} Success-Response:
+   * [
+   *  {
+   *  createdAt : 1532012974311,
+   *  updatedAt: 1532012974311,
+   *  id: 1,
+   *  name: "Pull up"
+   *  tags: [
+   *    "Gym",
+   *    "Mixed"
+   *    ]
+   *  }
+   * ]
+   *
+   * @apiErrorExample {json} Error-Response:
+   *     {
+   *       "error": true
+   *       "message": "Unable to find workouts."
+   *     }
+   *
+   */
   async listAll(req, res) {
-    const workouts = await Workout.find();
-    res.status(200).json(workouts);
+    try {
+      const workouts = await Workout.find();
+      return res.status(200).json(workouts);
+    } catch (e) {
+      return res.errorMessage('Unable to find workouts.', 400, e);
+    }
   },
 
+  /**
+   * @api {post} /workout/filter Filter workouts with tags.
+   * @apiName FilterWorkouts
+   * @apiGroup Workout
+   * @apiVersion  1.0.0
+   *
+   * @apiParam {String[]} tags  Array of tags to filter workouts.
+   *
+   * @apiSuccess {json} body Array of workouts
+   * @apiSampleRequest off
+   * @apiSuccessExample {json} Success-Response:
+   * [
+   *  {
+   *  createdAt : 1532012974311,
+   *  updatedAt: 1532012974311,
+   *  id: 1,
+   *  name: "Pull up"
+   *  tags: [
+   *    "Gym",
+   *    "Mixed"
+   *    ]
+   *  }
+   * ]
+   *
+   * @apiErrorExample {json} Error-Response:
+   *     {
+   *       "error": true
+   *       "message": "Unable to find workouts."
+   *     }
+   *
+   */
   async search(req, res) {
     const { tags } = req.allParams();
     if (!_.isArray(tags)) {
@@ -41,7 +105,27 @@ module.exports = {
       return res.errorMessage('Everything is fucked.', 400, e);
     }
   },
-
+  /**
+   * @api {post} /workout Add new workout
+    * @apiPermission requireToken
+    * @apiName CreateWorkout
+   * @apiGroup Workout
+   * @apiVersion 1.0.0
+   * @apiSuccess {Object} body Workout
+   * @apiSampleRequest off
+   *
+   * @apiSuccessExample {json} Success-Response:
+   *  {
+   *  createdAt : 1532012974311,
+   *  updatedAt: 1532012974311,
+   *  id: 1,
+   *  name: "Pull up"
+   *  tags: [
+   *    "Gym",
+   *    "Mixed"
+   *    ]
+   *  }
+   */
   async addWorkout(req, res) {
     const params = req.allParams();
 
@@ -55,7 +139,35 @@ module.exports = {
       return res.errorMessage('Error creating.', 400, e);
     }
   },
-
+  /**
+   * @api {get} /workout/:id Get one workout
+   * @apiName GetOneWorkout
+   * @apiGroup Workout
+   * @apiVersion  1.0.0
+   *
+   * @apiParam {number} id Workout id.
+   *
+   * @apiSuccess {Object} body Workout
+   *
+   * @apiSuccessExample {json} Success-Response:
+   *  {
+   *  createdAt : 1532012974311,
+   *  updatedAt: 1532012974311,
+   *  id: 1,
+   *  name: "Pull up"
+   *  tags: [
+   *    "Gym",
+   *    "Mixed"
+   *    ]
+   *  }
+   *
+   * @apiErrorExample {json} Error-Response:
+   *     {
+   *       "error": true
+   *       "message": "Unable to find workout."
+   *     }
+   *
+   */
   async getOne(req, res) {
     try {
       const { id } = req.allParams();
@@ -66,6 +178,27 @@ module.exports = {
     }
   },
 
+  /**
+   * @api {post} /workout/:id Update existing workout
+   * @apiName UpdateWorkout
+   * @apiGroup Workout
+   * @apiVersion 1.0.0
+   * @apiPermission requireToken
+   * @apiSuccess {Object} body Workout
+   * @apiSampleRequest off
+   *
+   * @apiSuccessExample {json} Success-Response:
+   *  {
+   *  createdAt : 1532012974311,
+   *  updatedAt: 1532012974311,
+   *  id: 1,
+   *  name: "Pull up"
+   *  tags: [
+   *    "Gym",
+   *    "Mixed"
+   *    ]
+   *  }
+   */
   async updateWorkout(req, res) {
     try {
       const { id, name, tags } = req.allParams();
