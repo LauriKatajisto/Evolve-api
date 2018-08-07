@@ -20,9 +20,11 @@ module.exports = {
     },
     rating1: {
       type: 'number',
+      allowNull: true,
     },
     rating2: {
       type: 'number',
+      allowNull: true,
     },
     workouttype: {
       type: 'string',
