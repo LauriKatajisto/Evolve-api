@@ -15,6 +15,15 @@ module.exports = {
     reps: {
       type: 'string',
     },
+    description: {
+      type: 'string',
+    },
+    rating1: {
+      type: 'number',
+    },
+    rating2: {
+      type: 'number',
+    },
     workouttype: {
       type: 'string',
       isIn: ['challenge', 'workout'],

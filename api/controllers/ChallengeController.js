@@ -62,6 +62,9 @@ module.exports = {
       reps,
       workouttype,
       challenge,
+      description,
+      rating1,
+      rating2,
     } = params;
 
     if (!name || !workouttype || !reps) {
@@ -80,6 +83,9 @@ module.exports = {
           submitter,
           reps,
           workouttype,
+          description,
+          rating1,
+          rating2,
         },
       ).fetch();
 
