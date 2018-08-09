@@ -65,6 +65,7 @@ module.exports = {
       description,
       rating1,
       rating2,
+      tags,
     } = params;
 
     if (!name || !workouttype || !reps) {
@@ -86,6 +87,7 @@ module.exports = {
           description,
           rating1,
           rating2,
+          tags,
         },
       ).fetch();
 

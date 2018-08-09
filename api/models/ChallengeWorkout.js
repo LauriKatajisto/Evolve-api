@@ -18,6 +18,9 @@ module.exports = {
     description: {
       type: 'string',
     },
+    tags: {
+      type: 'string',
+    },
     rating1: {
       type: 'number',
       allowNull: true,
