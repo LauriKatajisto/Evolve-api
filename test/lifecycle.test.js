@@ -10,8 +10,10 @@ before(function(done) {
 
   }, async function(err) {
     if (err) { return done(err); }
-
-    await Workout.create({ name: 'test workout'});
+    await Workout.destroy({});
+    await Token.destroy({});
+    await Token.create({ token: '123' });
+    await Workout.create({ name: 'test workout', tags: ['Gym']});
 
     return done();
   });
@@ -19,8 +21,5 @@ before(function(done) {
 
 // After all tests have finished...
 after( function(done) {
-
-  Workout.destroy({}).then( s => {
-    sails.lower(done);
-  });
+  sails.lower(done);
 });
