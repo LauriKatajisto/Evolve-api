@@ -1,15 +1,15 @@
 var supertest = require('supertest');
+var chai = require('chai');
+var expect = chai.expect;
 
 describe('HelloController.hello', function() {
-
-  describe('#version()', function() {
-    it('return version number', function (done) {
-      supertest(sails.hooks.http.app)
-      .get('/')
-      .expect('Content-Type', /json/)
-      .expect(200, {
-        version: process.env.npm_package_version,
-      },done);
+  it('should return version number', function (done) {
+    supertest(sails.hooks.http.app)
+    .get('/')
+    .end((err, res) => {
+      expect(res.body.version).to.equal(process.env.npm_package_version);
+      expect(res.statusCode).to.be.equal(200);
+      done();
     });
   });
 
