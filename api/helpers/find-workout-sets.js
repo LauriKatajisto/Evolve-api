@@ -16,9 +16,11 @@ module.exports = {
     challenges.forEach((c) => {
       const { challenge } = c;
       const reps = c.reps.split(',');
-      reps.forEach((rep, i) => {
-        challenge[i].reps = parseInt(reps[i], 10);
-      });
+      if (challenge.length === reps.length) {
+        reps.forEach((rep, i) => {
+          challenge[i].reps = parseInt(reps[i], 10);
+        });
+      }
     });
 
     return exits.success(challenges);
