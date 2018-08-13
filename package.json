@@ -1,7 +1,7 @@
 {
   "name": "evolve-apix",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
@@ -37,7 +37,7 @@
     "dev": "NODE_ENV=development node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "eslint api --quiet",
-    "custom-tests": "NODE_ENV=test mocha --reporter=nyan test/lifecycle.test.js test/api/**/*_spec.js"
+    "custom-tests": "NODE_ENV=test mocha test/lifecycle.test.js test/api/**/*_spec.js"
   },
   "main": "app.js",
   "repository": {

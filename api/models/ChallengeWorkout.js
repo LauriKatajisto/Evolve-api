@@ -29,6 +29,10 @@ module.exports = {
       type: 'number',
       allowNull: true,
     },
+    score: {
+      type: 'number',
+      defaultsTo: 0,
+    },
     workouttype: {
       type: 'string',
       isIn: ['challenge', 'workout'],

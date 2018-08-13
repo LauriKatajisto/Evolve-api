@@ -100,6 +100,7 @@ module.exports = {
   },
 
   /**
+<<<<<<< HEAD
    * @api {get} /challenge Get all curated challenges
    * @apiName GetChallenges
    * @apiGroup Workout Challenges
@@ -117,4 +118,39 @@ module.exports = {
     }
     return res.status(200).json({ message: 'Queued. Thank you.' });
   },
+=======
+   * @api {post} /challenge/:id/voteup Vote challenge up
+   * @apiName ChallengeVoteUp
+   * @apiGroup Workout Challenges
+   * @apiVersion 1.0.0
+   * @apiSampleRequest off
+   */
+  async challengeVoteUp(req, res) {
+    const params = req.allParams();
+    try {
+      const result = await sails.helpers.voteOnChallenge(params.id, 'up');
+      return res.status(200).json(result);
+    } catch (e) {
+      return res.errorMessage('', 400, e);
+    }
+  },
+
+  /**
+   * @api {post} /challenge/:id/voteup Vote challenge up
+   * @apiName ChallengeVoteDown
+   * @apiGroup Workout Challenges
+   * @apiVersion 1.0.0
+   * @apiSampleRequest off
+   */
+  async challengeVoteDown(req, res) {
+    const params = req.allParams();
+    try {
+      const result = await sails.helpers.voteOnChallenge(params.id, 'down');
+      return res.status(200).json(result);
+    } catch (e) {
+      return res.errorMessage('', 400, e);
+    }
+  },
+
+>>>>>>> master
 };
