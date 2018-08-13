@@ -106,9 +106,23 @@ module.exports = {
    * @apiVersion 1.0.0
    */
   async suggestChallenge(req, res) {
+    const params = req.allParams();
+
+    if (!params.type || !params.message || !params.submitter) {
+      return res.errorMessage('Missing parameters.', 400);
+    }
+
     if (sails.config.environment !== 'test') {
       try {
-        const response = await sails.helpers.sendEmail('New challenge suggestion', 'fasf', 'lauri.katajisto@gmail.com');
+        const body = `Type ${params.type}
+Message: ${params.message}
+submitter: ${params.submitter}`;
+
+        const response = await sails.helpers.sendEmail(
+          body,
+          'New challenge suggestion',
+          process.env.ADMIN_EMAILS,
+        );
 
         return res.status(200).json({ message: response.message });
       } catch (e) {
