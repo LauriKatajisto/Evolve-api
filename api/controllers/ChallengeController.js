@@ -100,7 +100,6 @@ module.exports = {
   },
 
   /**
-<<<<<<< HEAD
    * @api {get} /challenge Get all curated challenges
    * @apiName GetChallenges
    * @apiGroup Workout Challenges
@@ -118,7 +117,8 @@ module.exports = {
     }
     return res.status(200).json({ message: 'Queued. Thank you.' });
   },
-=======
+
+  /**
    * @api {post} /challenge/:id/voteup Vote challenge up
    * @apiName ChallengeVoteUp
    * @apiGroup Workout Challenges
@@ -152,5 +152,4 @@ module.exports = {
     }
   },
 
->>>>>>> master
 };
