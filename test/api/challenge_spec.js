@@ -24,7 +24,7 @@ describe('ChallengeController.suggestChallenge', function() {
     .end((err, res) => {
       expect(res.statusCode).to.be.equal(200);
       expect(res.body).to.be.a('object');
-      expect(res.body.message).to.be.equal('Thank you for your suggestion.');
+      expect(res.body.message).to.be.equal('Queued. Thank you.');
       done();
     });
   });
