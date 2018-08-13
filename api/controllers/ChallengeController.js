@@ -98,4 +98,17 @@ module.exports = {
       return res.errorMessage('Error creating challenge!', 400, e);
     }
   },
+
+  /**
+   * @api {get} /challenge Get all curated challenges
+   * @apiName GetChallenges
+   * @apiGroup Workout Challenges
+   * @apiVersion 1.0.0
+   */
+  async suggestChallenge(req, res) {
+    if (sails.config.environment !== 'test') {
+      await sails.helpers.sendEmail('bb', 'fasf', 'lauri.katajisto@gmail.com');
+    }
+    return res.status(200).json({ message: 'Thank you for your suggestion.' });
+  },
 };

@@ -16,3 +16,17 @@ describe('ChallengeController.getChallenges', function() {
     });
   });
 });
+
+describe('ChallengeController.suggestChallenge', function() {
+  it('should return ok message', function (done) {
+    supertest(sails.hooks.http.app)
+    .post('/challenge/suggest')
+    .end((err, res) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(res.body).to.be.a('object');
+      expect(res.body.message).to.be.equal('Thank you for your suggestion.');
+      done();
+    });
+  });
+});
+

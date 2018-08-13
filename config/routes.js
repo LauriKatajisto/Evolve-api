@@ -21,5 +21,6 @@ module.exports.routes = {
 
   'GET /challenge': 'ChallengeController.getChallenges',
   'GET /workoutset': 'ChallengeController.getWorkoutSet',
-  'POST /challenge': 'ChallengeController.createChallenge'
+  'POST /challenge': 'ChallengeController.createChallenge',
+  'POST /challenge/suggest': 'ChallengeController.suggestChallenge'
 };
