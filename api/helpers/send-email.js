@@ -36,7 +36,7 @@ module.exports = {
 
     mailgun.messages().send(data, (error, body) => {
       if (error) {
-        return exits.sendError();
+        return exits.sendError(error);
       }
       return exits.success(body);
     });

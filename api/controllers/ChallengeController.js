@@ -107,8 +107,14 @@ module.exports = {
    */
   async suggestChallenge(req, res) {
     if (sails.config.environment !== 'test') {
-      await sails.helpers.sendEmail('bb', 'fasf', 'lauri.katajisto@gmail.com');
+      try {
+        const response = await sails.helpers.sendEmail('New challenge suggestion', 'fasf', 'lauri.katajisto@gmail.com');
+
+        return res.status(200).json({ message: response.message });
+      } catch (e) {
+        return res.errorMessage('Error Sending email', 400, e);
+      }
     }
-    return res.status(200).json({ message: 'Thank you for your suggestion.' });
+    return res.status(200).json({ message: 'Queued. Thank you.' });
   },
 };
