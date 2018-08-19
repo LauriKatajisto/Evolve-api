@@ -1,4 +1,5 @@
 const sails = require('sails');
+require('dotenv').config();
 
 // Before running any tests...
 before(function(done) {

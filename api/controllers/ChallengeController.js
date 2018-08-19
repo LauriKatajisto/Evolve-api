@@ -100,6 +100,41 @@ module.exports = {
   },
 
   /**
+   * @api {get} /challenge Get all curated challenges
+   * @apiName GetChallenges
+   * @apiGroup Workout Challenges
+   * @apiVersion 1.0.0
+   */
+  async suggestChallenge(req, res) {
+    const params = req.allParams();
+
+    if (!params.type || !params.message || !params.submitter || !params.title) {
+      return res.errorMessage('Missing parameters.', 400);
+    }
+
+    if (sails.config.environment !== 'test') {
+      try {
+        const body = `
+Title: ${params.title}
+Type: ${params.type}
+Message: ${params.message}
+Submitter: ${params.submitter}`;
+
+        const response = await sails.helpers.sendEmail(
+          body,
+          'New challenge/workout suggestion',
+          process.env.ADMIN_EMAILS,
+        );
+
+        return res.status(200).json({ message: response.message });
+      } catch (e) {
+        return res.errorMessage('Error Sending email', 400, e);
+      }
+    }
+    return res.status(200).json({ message: 'Queued. Thank you.' });
+  },
+
+  /**
    * @api {post} /challenge/:id/voteup Vote challenge up
    * @apiName ChallengeVoteUp
    * @apiGroup Workout Challenges
