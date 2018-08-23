@@ -28,7 +28,7 @@ module.exports = {
 
   fn: (inputs, exits) => {
     const data = {
-      from: 'Evolve-API Mailer <noreply@evolveapp.io>',
+      from: 'TribeOfWolves-API Mailer <noreply@tribeofwolvesapp.com>',
       to: inputs.receivers,
       subject: inputs.title,
       text: inputs.body,
