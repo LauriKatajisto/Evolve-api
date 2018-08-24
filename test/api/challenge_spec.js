@@ -10,10 +10,29 @@ describe('ChallengeController.getChallenges', function() {
     .end((err, res) => {
       expect(res.statusCode).to.be.equal(200);
       expect(res.body).to.be.a('array');
-      expect(res.body).to.have.lengthOf(1);
+      expect(res.body).to.have.lengthOf(2);
       expect(res.body[0].workouttype).to.be.equal('challenge');
       expect(res.body[0].name).to.be.a('string');
       expect(res.body[0].score).to.be.equal(0);
+      expect(res.body[0].name).to.be.equal('ASDSAD');
+      cId = res.body[0].id;
+
+      done();
+    });
+  });
+
+  it('should return array of challenges', function (done) {
+    supertest(sails.hooks.http.app)
+    .get('/challenge?sortScheme=DESC')
+    .end((err, res) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(res.body).to.be.a('array');
+      expect(res.body).to.have.lengthOf(2);
+      expect(res.body[0].workouttype).to.be.equal('challenge');
+      expect(res.body[0].name).to.be.a('string');
+      expect(res.body[0].score).to.be.equal(0);
+      expect(res.body[1].name).to.be.equal('ASDSAD');
+
       cId = res.body[0].id;
 
       done();
