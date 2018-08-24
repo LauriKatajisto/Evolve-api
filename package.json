@@ -1,7 +1,7 @@
 {
   "name": "evolve-apix",
   "private": true,
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
@@ -50,12 +50,12 @@
     "node": ">=9.8"
   },
   "apidoc": {
-    "name": "Evolve Fitness API",
+    "name": "Tribe Of Wolves API",
     "version": "1.0.0",
-    "description": "",
-    "sampleUrl": "https://evolve-fitness.herokuapp.com",
+    "description": "API for Tribe Of Wolves App",
+    "sampleUrl": "https://api.tribeofwolvesapp.com",
     "apidoc": {
-      "title": "Evolve Fitness API",
+      "title": "Tribe Of Wolves API",
       "url": "https://evolve-fitness.herokuapp.com"
     }
   }
