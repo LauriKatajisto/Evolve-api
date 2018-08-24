@@ -1,14 +1,34 @@
+const createSearchParams = (params, workouttype) => {
+  const searchParams = {
+    workouttype,
+  };
+
+  if (params.sortScheme) {
+    searchParams.sortScheme = params.sortScheme;
+  }
+  if (params.sort) {
+    searchParams.sort = params.sort;
+  }
+
+  return searchParams;
+};
+
 module.exports = {
   /**
    * @api {get} /workoutset Get all curated workouts
    * @apiName GetWorkoutsets
    * @apiGroup Workout Challenges
+   * @apiParam {sort="name","score","submitter","rating1","rating2"} [sort=name] field to sort with
+   * @apiParam {sortScheme="ASC","DESC"} [sortScheme=ASC] field to sort with
+   *
    * @apiVersion 1.0.0
    *
    */
   async getWorkoutSet(req, res) {
+    const params = req.allParams();
+    const searchParams = createSearchParams(params, 'workout');
     try {
-      const challenges = await sails.helpers.findWorkoutSets('workout');
+      const challenges = await sails.helpers.findWorkoutSets.with(searchParams);
 
       return res.status(200).json(challenges);
     } catch (e) {
@@ -20,11 +40,17 @@ module.exports = {
    * @api {get} /challenge Get all curated challenges
    * @apiName GetChallenges
    * @apiGroup Workout Challenges
+   * @apiParam {sort="name","score","submitter","rating1","rating2"} [sort=name] field to sort with
+   * @apiParam {sortScheme="ASC","DESC"} [sortScheme=ASC] field to sort with
+   *
    * @apiVersion 1.0.0
    */
   async getChallenges(req, res) {
+    const params = req.allParams();
+    const searchParams = createSearchParams(params, 'challenge');
+
     try {
-      const challenges = await sails.helpers.findWorkoutSets('challenge');
+      const challenges = await sails.helpers.findWorkoutSets.with(searchParams);
 
       return res.status(200).json(challenges);
     } catch (e) {

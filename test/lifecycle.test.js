@@ -17,10 +17,12 @@ before(function(done) {
       await ChallengeWorkout.destroy({});
       await Token.create({ token: '123' });
       const workout = await Workout.create({ name: 'test workout', tags: ['Gym']}).fetch();
-      const challenge = await ChallengeWorkout.create({ name: 'quad blast', workouttype: 'challenge' }).fetch();
-      const set = await ChallengeWorkout.create({ name: 'AAA', workouttype: 'workout', reps: '1' }).fetch();
+      const challenge1 = await ChallengeWorkout.create({ name: 'quad blast', workouttype: 'challenge' }).fetch();
+      const challenge2 = await ChallengeWorkout.create({ name: 'ASDSAD', workouttype: 'challenge' }).fetch();
+      const set1 = await ChallengeWorkout.create({ name: 'AAA', workouttype: 'workout', reps: '1', rating1: '2'  }).fetch();
+      const set2 = await ChallengeWorkout.create({ name: 'BBB', workouttype: 'workout', reps: '1', rating1: '4' }).fetch();
       
-      await ChallengeWorkout.addToCollection(set.id, 'challenge').members(workout.id);
+      await ChallengeWorkout.addToCollection(set1.id, 'challenge').members(workout.id);
 
 
     } catch(e) {

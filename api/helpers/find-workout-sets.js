@@ -8,10 +8,26 @@ module.exports = {
       required: true,
       description: 'Workout type',
     },
+    sort: {
+      type: 'string',
+      defaultsTo: 'name',
+      isIn: ['name', 'score', 'submitter', 'rating1', 'rating2'],
+      description: 'Field to sort with',
+    },
+    sortScheme: {
+      type: 'string',
+      defaultsTo: 'ASC',
+      isIn: ['ASC', 'DESC'],
+      description: 'Scheme to order the results',
+    },
   },
 
   fn: async (inputs, exits) => {
-    const challenges = await ChallengeWorkout.find({ workouttype: inputs.workouttype }).populate('challenge');
+    const challenges = await ChallengeWorkout.find({
+      where: { workouttype: inputs.workouttype },
+      sort: `${inputs.sort} ${inputs.sortScheme}`,
+    })
+      .populate('challenge');
 
     challenges.forEach((c) => {
       const { challenge } = c;
