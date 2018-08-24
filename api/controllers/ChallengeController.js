@@ -17,7 +17,7 @@ module.exports = {
   /**
    * @api {get} /workoutset Get all curated workouts
    * @apiName GetWorkoutsets
-   * @apiGroup Workout Challenges
+   * @apiGroup WorkoutChallenges
    * @apiParam {sort="name","score","submitter","rating1","rating2"} [sort=name] field to sort with
    * @apiParam {sortScheme="ASC","DESC"} [sortScheme=ASC] field to sort with
    *
@@ -39,7 +39,7 @@ module.exports = {
   /**
    * @api {get} /challenge Get all curated challenges
    * @apiName GetChallenges
-   * @apiGroup Workout Challenges
+   * @apiGroup WorkoutChallenges
    * @apiParam {sort="name","score","submitter","rating1","rating2"} [sort=name] field to sort with
    * @apiParam {sortScheme="ASC","DESC"} [sortScheme=ASC] field to sort with
    *
@@ -61,7 +61,7 @@ module.exports = {
   /**
    * @api {post} /challenge Create new curated challenge or workoutset
    * @apiName CreateChallenge
-   * @apiGroup Workout Challenges
+   * @apiGroup WorkoutChallenges
    * @apiVersion 1.0.0
    * @apiSampleRequest off
    * @apiPermission requireToken
@@ -128,7 +128,7 @@ module.exports = {
   /**
    * @api {get} /challenge Get all curated challenges
    * @apiName GetChallenges
-   * @apiGroup Workout Challenges
+   * @apiGroup WorkoutChallenges
    * @apiVersion 1.0.0
    */
   async suggestChallenge(req, res) {
@@ -163,7 +163,7 @@ Submitter: ${params.submitter}`;
   /**
    * @api {post} /challenge/:id/voteup Vote challenge up
    * @apiName ChallengeVoteUp
-   * @apiGroup Workout Challenges
+   * @apiGroup WorkoutChallenges
    * @apiVersion 1.0.0
    * @apiSampleRequest off
    */
@@ -180,7 +180,7 @@ Submitter: ${params.submitter}`;
   /**
    * @api {post} /challenge/:id/voteup Vote challenge up
    * @apiName ChallengeVoteDown
-   * @apiGroup Workout Challenges
+   * @apiGroup WorkoutChallenges
    * @apiVersion 1.0.0
    * @apiSampleRequest off
    */

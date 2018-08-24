@@ -1,6 +1,16 @@
 const Sentencer = require('sentencer');
 
 module.exports = {
+  /**
+   * @api {post} /savedworkout/ Create new saved workout
+   * @apiName CreateSavedWorkout
+   * @apiGroup SavedWorkouts
+   * @apiParam {Number[]} workouts name of saved workout
+   * @apiParam {String} reps name of saved workout
+   * @apiSampleRequest off
+   * @apiVersion 1.0.0
+   *
+   */
   async createSW(req, res) {
     const params = req.allParams();
 
@@ -25,6 +35,15 @@ module.exports = {
     }
   },
 
+  /**
+   * @api {get} /savedworkout/:name Get one saved workout
+   * @apiName GetSavedWorkout
+   * @apiGroup SavedWorkouts
+   * @apiParam {String} name of saved workout
+   *
+   * @apiVersion 1.0.0
+   *
+   */
   async getSW(req, res) {
     const params = req.allParams();
 

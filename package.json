@@ -54,6 +54,11 @@
     "version": "1.0.0",
     "description": "API for Tribe Of Wolves App",
     "sampleUrl": "https://api.tribeofwolvesapp.com",
+    "order": [
+      "Workout",
+      "WorkoutChallenges",
+      "SavedWorkout"
+    ],
     "apidoc": {
       "title": "Tribe Of Wolves API",
       "url": "https://evolve-fitness.herokuapp.com"
