@@ -1,10 +1,20 @@
 const Sentencer = require('sentencer');
 
 module.exports = {
+  /**
+   * @api {post} /savedworkout/ Create new saved workout
+   * @apiName CreateSavedWorkout
+   * @apiGroup SavedWorkouts
+   * @apiParam {Number[]} workouts name of saved workout
+   * @apiParam {String} reps name of saved workout
+   * @apiSampleRequest off
+   * @apiVersion 1.0.0
+   *
+   */
   async createSW(req, res) {
     const params = req.allParams();
 
-    if (!params.workouts) {
+    if (!params.workouts || !params.reps) {
       return res.errorMessage('Missing parameter workouts!.', 400);
     }
 
@@ -12,7 +22,7 @@ module.exports = {
     try {
       const workouts = await SavedWorkout.find({ name });
       if (workouts.length === 0) {
-        const newsave = await SavedWorkout.create({ name }).fetch();
+        const newsave = await SavedWorkout.create({ name, reps: params.reps }).fetch();
 
         await SavedWorkout.addToCollection(newsave.id, 'workouts').members(params.workouts);
 
@@ -25,6 +35,15 @@ module.exports = {
     }
   },
 
+  /**
+   * @api {get} /savedworkout/:name Get one saved workout
+   * @apiName GetSavedWorkout
+   * @apiGroup SavedWorkouts
+   * @apiParam {String} name of saved workout
+   *
+   * @apiVersion 1.0.0
+   *
+   */
   async getSW(req, res) {
     const params = req.allParams();
 

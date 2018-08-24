@@ -15,6 +15,7 @@ before(function(done) {
       await Workout.destroy({});
       await Token.destroy({});
       await ChallengeWorkout.destroy({});
+      await SavedWorkout.destroy({});
       await Token.create({ token: '123' });
       const workout = await Workout.create({ name: 'test workout', tags: ['Gym']}).fetch();
       const challenge1 = await ChallengeWorkout.create({ name: 'quad blast', workouttype: 'challenge' }).fetch();
