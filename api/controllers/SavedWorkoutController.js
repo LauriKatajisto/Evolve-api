@@ -4,7 +4,7 @@ module.exports = {
   async createSW(req, res) {
     const params = req.allParams();
 
-    if (!params.workouts) {
+    if (!params.workouts && !params.reps) {
       return res.errorMessage('Missing parameter workouts!.', 400);
     }
 
@@ -12,7 +12,7 @@ module.exports = {
     try {
       const workouts = await SavedWorkout.find({ name });
       if (workouts.length === 0) {
-        const newsave = await SavedWorkout.create({ name }).fetch();
+        const newsave = await SavedWorkout.create({ name, reps: params.reps }).fetch();
 
         await SavedWorkout.addToCollection(newsave.id, 'workouts').members(params.workouts);
 

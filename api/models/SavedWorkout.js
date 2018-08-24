@@ -9,6 +9,9 @@ module.exports = {
       collection: 'workout',
       via: 'workoutcollections',
     },
+    reps: {
+      type: 'string',
+    },
   },
   customToJSON() {
     const x = this;
