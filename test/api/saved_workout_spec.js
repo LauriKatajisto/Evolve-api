@@ -20,6 +20,29 @@ describe('SavedWorkout.createSW', function() {
   });
 });
 
+describe('SavedWorkout.createSW', function() {
+  it('should require all parameters', function (done) {
+    supertest(sails.hooks.http.app)
+    .post('/savedworkout')
+    .end((err, res) => {
+      expect(res.statusCode).to.be.equal(400);
+      done();
+    });
+  });
+});
+
+describe('SavedWorkout.createSW', function() {
+  it('should require reps', function (done) {
+    supertest(sails.hooks.http.app)
+    .post('/savedworkout')
+    .send({ workouts: ['1'] })
+    .end((err, res) => {
+      expect(res.statusCode).to.be.equal(400);
+      done();
+    });
+  });
+});
+
 describe('SavedWorkout.getSW', function() {
   it('should return saved workout', function (done) {
     supertest(sails.hooks.http.app)

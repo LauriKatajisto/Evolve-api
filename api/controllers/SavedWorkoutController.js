@@ -14,7 +14,7 @@ module.exports = {
   async createSW(req, res) {
     const params = req.allParams();
 
-    if (!params.workouts && !params.reps) {
+    if (!params.workouts || !params.reps) {
       return res.errorMessage('Missing parameter workouts!.', 400);
     }
 
