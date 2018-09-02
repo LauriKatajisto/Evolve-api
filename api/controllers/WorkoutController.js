@@ -44,6 +44,7 @@ module.exports = {
    * @apiVersion  1.0.0
    *
    * @apiParam {String[]} tags  Array of tags to filter workouts.
+   * @apiParam {Number} [difficulty=1,2,3] Difficulty
    *
    * @apiSuccess {json} body Array of workouts
    * @apiSampleRequest off
@@ -61,21 +62,22 @@ module.exports = {
    *  }
    * ]
    *
-   * @apiErrorExample {json} Error-Response:
-   *     {
-   *       "error": true
-   *       "message": "Unable to find workouts."
-   *     }
-   *
    */
   async search(req, res) {
-    const { tags } = req.allParams();
+    const { tags, difficulty } = req.allParams();
     if (!_.isArray(tags)) {
       return res.errorMessage('Tags need to be an array.', 400);
     }
 
     try {
-      const workouts = await Workout.find();
+      const searchParams = {};
+      if (difficulty) {
+        searchParams.difficulty = {
+          '>=': difficulty,
+        };
+      }
+
+      const workouts = await Workout.find(searchParams);
 
       const filtered = workouts.filter((w) => {
         let status = false;
