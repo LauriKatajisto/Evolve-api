@@ -65,9 +65,6 @@ module.exports = {
    */
   async search(req, res) {
     const { tags, difficulty } = req.allParams();
-    if (!_.isArray(tags)) {
-      return res.errorMessage('Tags need to be an array.', 400);
-    }
 
     try {
       const searchParams = {};
@@ -79,6 +76,12 @@ module.exports = {
 
       const workouts = await Workout.find(searchParams);
 
+      if (!tags) {
+        return res.status(200).json(workouts);
+      }
+      if (!_.isArray(tags)) {
+        return res.errorMessage('Tags need to be an array.', 400);
+      }
       const filtered = workouts.filter((w) => {
         let status = false;
         let tagsFound = 0;

@@ -112,6 +112,30 @@ describe('WorkoutController.search', function() {
     });
   });
 
+  it('find without tags workouts with difficulty === 1', function (done) {
+    supertest(sails.hooks.http.app)
+    .post('/workout/filter')
+    .send({ difficulty: 1 })
+    .end((err, res) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(res.body.length).to.be.equal(4);
+      expect(res.body[0].difficulty).to.be.equal(3);
+      expect(res.body[1].difficulty).to.be.equal(2);
+      expect(res.body[2].difficulty).to.be.equal(1);
+      done();
+    });
+  });
+
+  it('tags needs to be an array if given', function (done) {
+    supertest(sails.hooks.http.app)
+    .post('/workout/filter')
+    .send({ tags: 'nakki' })
+    .end((err, res) => {
+      expect(res.statusCode).to.be.equal(400);
+      expect(res.body.message).to.be.equal('Tags need to be an array.');
+      done();
+    });
+  });
 
 });
 
