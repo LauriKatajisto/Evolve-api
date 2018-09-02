@@ -34,7 +34,7 @@ describe('WorkoutController.addWorkout', function() {
     supertest(sails.hooks.http.app)
     .post('/workout')
     .set('Token', '123')
-    .send({ name: 'Second workout', tags: ['Gym'] })
+    .send({ name: 'Second workout', tags: ['Gym'], difficulty: 2 })
     .end((err, res) => {
       expect(res.statusCode).to.be.equal(200);
       expect(res.body).to.be.a('object');

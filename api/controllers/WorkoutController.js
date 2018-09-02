@@ -113,7 +113,9 @@ module.exports = {
    * @apiVersion 1.0.0
    * @apiSuccess {Object} body Workout
    * @apiSampleRequest off
-   *
+   * @apiParam {Number=1,2,3} difficulty Difficulty of workout
+   * @apiParam {String} name Name of workout
+   * @apiParam {String[]} [tags] Tags for workout
    * @apiSuccessExample {json} Success-Response:
    *  {
    *  createdAt : 1532012974311,
@@ -129,7 +131,7 @@ module.exports = {
   async addWorkout(req, res) {
     const params = req.allParams();
 
-    if (!params.name) {
+    if (!params.name || !params.difficulty) {
       return res.errorMessage('Missing parameters.', 400);
     }
     try {
