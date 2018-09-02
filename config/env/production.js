@@ -154,7 +154,7 @@ module.exports = {
 
 
   log: {
-    level: 'debug'
+    level: 'error'
   },
 
   http: {
@@ -172,7 +172,7 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://evolve-fitness.herokuapp.com',
+    baseUrl: 'https://api.tribeofwolvesapp.com',
   },
 
 };
