@@ -10,6 +10,11 @@ module.exports = {
         return _.isArray(value);
       },
     },
+    difficulty: {
+      type: 'number',
+      required: true,
+      isIn: [1, 2, 3],
+    },
     workoutcollections: {
       collection: 'savedworkout',
       via: 'workouts',
