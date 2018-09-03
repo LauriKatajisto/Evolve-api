@@ -70,7 +70,7 @@ module.exports = {
       const searchParams = {};
       if (difficulty) {
         searchParams.difficulty = {
-          '>=': difficulty,
+          '<=': difficulty,
         };
       }
 

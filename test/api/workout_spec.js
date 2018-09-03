@@ -80,8 +80,8 @@ describe('WorkoutController.search', function() {
     .end((err, res) => {
       expect(res.statusCode).to.be.equal(200);
       expect(res.body.length).to.be.equal(2);
-      expect(res.body[0].difficulty).to.be.equal(3);
-      expect(res.body[1].difficulty).to.be.equal(2);
+      expect(res.body[0].difficulty).to.be.equal(2);
+      expect(res.body[1].difficulty).to.be.equal(1);
       done();
     });
   });
@@ -92,8 +92,10 @@ describe('WorkoutController.search', function() {
     .send({ tags: ['Gym'], difficulty: 3 })
     .end((err, res) => {
       expect(res.statusCode).to.be.equal(200);
-      expect(res.body.length).to.be.equal(1);
+      expect(res.body.length).to.be.equal(3);
       expect(res.body[0].difficulty).to.be.equal(3);
+      expect(res.body[1].difficulty).to.be.equal(2);
+      expect(res.body[2].difficulty).to.be.equal(1);
       done();
     });
   });
@@ -104,10 +106,8 @@ describe('WorkoutController.search', function() {
     .send({ tags: ['Gym'], difficulty: 1 })
     .end((err, res) => {
       expect(res.statusCode).to.be.equal(200);
-      expect(res.body.length).to.be.equal(3);
-      expect(res.body[0].difficulty).to.be.equal(3);
-      expect(res.body[1].difficulty).to.be.equal(2);
-      expect(res.body[2].difficulty).to.be.equal(1);
+      expect(res.body.length).to.be.equal(1);
+      expect(res.body[0].difficulty).to.be.equal(1);
       done();
     });
   });
@@ -118,10 +118,8 @@ describe('WorkoutController.search', function() {
     .send({ difficulty: 1 })
     .end((err, res) => {
       expect(res.statusCode).to.be.equal(200);
-      expect(res.body.length).to.be.equal(4);
-      expect(res.body[0].difficulty).to.be.equal(3);
-      expect(res.body[1].difficulty).to.be.equal(2);
-      expect(res.body[2].difficulty).to.be.equal(1);
+      expect(res.body.length).to.be.equal(1);
+      expect(res.body[0].difficulty).to.be.equal(1);
       done();
     });
   });
