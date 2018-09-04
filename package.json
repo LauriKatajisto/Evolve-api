@@ -1,7 +1,7 @@
 {
   "name": "evolve-apix",
   "private": true,
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
@@ -12,6 +12,7 @@
     "dotenv": "^6.0.0",
     "grunt": "^1.0.3",
     "mailgun-js": "^0.20.0",
+    "redis": "^2.8.0",
     "sails": "^1.0.2",
     "sails-hook-apianalytics": "^2.0.0",
     "sails-hook-grunt": "^3.0.2",
