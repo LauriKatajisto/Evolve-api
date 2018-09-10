@@ -13,6 +13,10 @@ const createSearchParams = (params, workouttype) => {
   return searchParams;
 };
 
+const get = key => sails.hooks.cache.get(key);
+const set = (key, value) => sails.hooks.cache.set(key, value);
+const del = () => sails.hooks.cache.reset();
+
 module.exports = {
   /**
    * @api {get} /workoutset Get all curated workouts
@@ -27,8 +31,16 @@ module.exports = {
   async getWorkoutSet(req, res) {
     const params = req.allParams();
     const searchParams = createSearchParams(params, 'workout');
+    const cacheKey = `challenges_${JSON.stringify(searchParams)}`;
+
     try {
+      const cached = get(cacheKey);
+      if (cached) {
+        return res.status(200).json(JSON.parse(cached));
+      }
+
       const challenges = await sails.helpers.findWorkoutSets.with(searchParams);
+      set(cacheKey, JSON.stringify(challenges));
 
       return res.status(200).json(challenges);
     } catch (e) {
@@ -48,9 +60,15 @@ module.exports = {
   async getChallenges(req, res) {
     const params = req.allParams();
     const searchParams = createSearchParams(params, 'challenge');
+    const cacheKey = `challenges_${JSON.stringify(searchParams)}`;
 
     try {
+      const cached = get(cacheKey);
+      if (cached) {
+        return res.status(200).json(JSON.parse(cached));
+      }
       const challenges = await sails.helpers.findWorkoutSets.with(searchParams);
+      set(cacheKey, JSON.stringify(challenges));
 
       return res.status(200).json(challenges);
     } catch (e) {
@@ -118,7 +136,7 @@ module.exports = {
       ).fetch();
 
       await ChallengeWorkout.addToCollection(newChallenge.id, 'challenge').members(params.challenge);
-
+      del();
       return res.status(200).json(newChallenge);
     } catch (e) {
       return res.errorMessage('Error creating challenge!', 400, e);
@@ -171,6 +189,7 @@ Submitter: ${params.submitter}`;
     const params = req.allParams();
     try {
       const result = await sails.helpers.voteOnChallenge(params.id, 'up');
+      del();
       return res.status(200).json(result);
     } catch (e) {
       return res.errorMessage('', 400, e);
@@ -188,6 +207,7 @@ Submitter: ${params.submitter}`;
     const params = req.allParams();
     try {
       const result = await sails.helpers.voteOnChallenge(params.id, 'down');
+      del();
       return res.status(200).json(result);
     } catch (e) {
       return res.errorMessage('', 400, e);
