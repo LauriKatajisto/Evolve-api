@@ -1,0 +1,18 @@
+config:
+  target: "https://api.tribeofwolvesapp.com"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+    - duration: 120
+      arrivalRate: 5
+      rampTo: 50
+    - duration: 600
+      arrivalRate: 50
+scenarios:
+  - name: "Search and buy"
+    flow:
+      - get:
+          url: "/workoutset"
+      - think: 3
+      - get:
+          url: "/challenge"

@@ -8,6 +8,7 @@
     "@sailshq/connect-redis": "^3.2.1",
     "@sailshq/lodash": "^3.10.3",
     "apidoc": "^0.17.6",
+    "artillery": "^1.6.0-23",
     "async": "2.0.1",
     "dotenv": "^6.0.0",
     "grunt": "^1.0.3",
@@ -38,7 +39,8 @@
     "dev": "NODE_ENV=development node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "eslint api --quiet",
-    "custom-tests": "NODE_ENV=test mocha test/lifecycle.test.js test/api/**/*_spec.js"
+    "custom-tests": "NODE_ENV=test mocha test/lifecycle.test.js test/api/**/*_spec.js",
+    "artillery": "artillery run artillery.yml"
   },
   "main": "app.js",
   "repository": {
