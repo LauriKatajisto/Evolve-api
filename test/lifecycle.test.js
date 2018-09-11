@@ -22,7 +22,7 @@ before(function(done) {
       const workout3 = await Workout.create({ name: 'Easy workout', tags: ['Gym'], difficulty: 1}).fetch();
       const challenge1 = await ChallengeWorkout.create({ name: 'quad blast', workouttype: 'challenge' }).fetch();
       const challenge2 = await ChallengeWorkout.create({ name: 'ASDSAD', workouttype: 'challenge' }).fetch();
-      const set1 = await ChallengeWorkout.create({ name: 'AAA', workouttype: 'workout', reps: '1', rating1: '2'  }).fetch();
+      const set1 = await ChallengeWorkout.create({ name: 'AAA', workouttype: 'workout', reps: '1x4', rating1: '2'  }).fetch();
       const set2 = await ChallengeWorkout.create({ name: 'BBB', workouttype: 'workout', reps: '1', rating1: '4' }).fetch();
       
       await ChallengeWorkout.addToCollection(set1.id, 'challenge').members(workout.id);

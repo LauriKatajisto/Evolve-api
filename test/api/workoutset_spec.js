@@ -13,6 +13,11 @@ describe('ChallengeController.getWorkoutSet', function() {
       expect(res.body[0].workouttype).to.be.equal('workout');
       expect(res.body[0].name).to.be.a('string');
       expect(res.body[0].name).to.be.equal('AAA');
+      expect(res.body[0].challenge).to.be.a('array');
+      expect(res.body[0].challenge[0].reps).to.be.equal(1);
+      expect(res.body[0].challenge[0].rounds).to.be.equal(4);
+      expect(res.body[1].challenge).to.be.a('array');
+      expect(res.body[1].name).to.be.equal('BBB');
       expect(res.body[1].name).to.be.equal('BBB');
       
       done();
