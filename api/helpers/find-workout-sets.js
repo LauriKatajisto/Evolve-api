@@ -34,6 +34,12 @@ module.exports = {
       const reps = c.reps.split(',');
       if (challenge.length === reps.length) {
         reps.forEach((rep, i) => {
+          if (rep.indexOf('x') > -1) {
+            const rounds = rep.split('x');
+            challenge[i].rounds = parseInt(rounds[1], 10);
+          } else {
+            challenge[i].rounds = 1;
+          }
           challenge[i].reps = parseInt(reps[i], 10);
         });
       }
