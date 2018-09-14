@@ -38,6 +38,40 @@ describe('ChallengeController.getChallenges', function() {
       done();
     });
   });
+  it('should check for valid sort OK', function (done) {
+    supertest(sails.hooks.http.app)
+    .get('/challenge?sort=name')
+    .end((err, res) => {
+      expect(res.statusCode).to.be.equal(200);
+      expect(res.body).to.be.a('array');
+      expect(res.body).to.have.lengthOf(2);
+      expect(res.body[0].workouttype).to.be.equal('challenge');
+      expect(res.body[0].name).to.be.a('string');
+      expect(res.body[0].score).to.be.equal(0);
+      expect(res.body[1].name).to.be.equal('quad blast');
+
+      cId = res.body[0].id;
+
+      done();
+    });
+  });
+  it('should check for valid sort ERROR', function (done) {
+    supertest(sails.hooks.http.app)
+    .get('/challenge?sort=xxxx')
+    .end((err, res) => {
+      expect(res.statusCode).to.be.equal(400);
+      done();
+    });
+  });
+
+  it('should check for valid sortScheme', function (done) {
+    supertest(sails.hooks.http.app)
+    .get('/challenge?sortScheme=XXX')
+    .end((err, res) => {
+      expect(res.statusCode).to.be.equal(400);
+      done();
+    });
+  });
 });
 
 describe('ChallengeController.challengeVoteUp / Down', function() {

@@ -1,16 +1,24 @@
+const validateParams = (params, validValues) => validValues.includes(params);
+
 const createSearchParams = (params, workouttype) => {
+  let paramsAreValid = true;
   const searchParams = {
     workouttype,
   };
 
   if (params.sortScheme) {
     searchParams.sortScheme = params.sortScheme;
+    paramsAreValid = validateParams(params.sortScheme, ['DESC', 'ASC']);
   }
   if (params.sort) {
     searchParams.sort = params.sort;
+    paramsAreValid = validateParams(params.sort, ['name', 'score', 'submitter', 'rating1', 'rating2']);
   }
 
-  return searchParams;
+  if (paramsAreValid) {
+    return searchParams;
+  }
+  return paramsAreValid;
 };
 
 const get = key => sails.hooks.cache.get(key);
