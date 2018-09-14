@@ -18,9 +18,7 @@ describe('SavedWorkout.createSW', function() {
       done();
     });
   });
-});
-
-describe('SavedWorkout.createSW', function() {
+  
   it('should require all parameters', function (done) {
     supertest(sails.hooks.http.app)
     .post('/savedworkout')
@@ -29,9 +27,6 @@ describe('SavedWorkout.createSW', function() {
       done();
     });
   });
-});
-
-describe('SavedWorkout.createSW', function() {
   it('should require reps', function (done) {
     supertest(sails.hooks.http.app)
     .post('/savedworkout')
@@ -41,7 +36,9 @@ describe('SavedWorkout.createSW', function() {
       done();
     });
   });
+
 });
+
 
 describe('SavedWorkout.getSW', function() {
   it('should return saved workout', function (done) {
