@@ -10,7 +10,7 @@ module.exports = function cacheHook(sails) {
         maxAge: 1000 * 60 * 60 * 24,
       };
 
-      cache = LRU(options);
+      cache = new LRU(options);
       sails.log('LRU Ready!');
       return cb();
     },
