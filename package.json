@@ -50,7 +50,7 @@
   "author": "lauri",
   "license": "",
   "engines": {
-    "node": ">=9.8"
+    "node": "12.x"
   },
   "apidoc": {
     "name": "Tribe Of Wolves API",
